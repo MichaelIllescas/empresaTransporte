@@ -1,4 +1,12 @@
+<?php
 
+
+session_start();
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +73,7 @@
                     <p class="text-center small">Ingresa tu datos de usuario y clave</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" action="funciones/validarInicioSesion.php" method="POST" novalidate>
                   <div class="alert alert-warning alert-dismissible fade d-none" role="alert">
                     <i class="bi bi-exclamation-triangle me-1"></i>
                     Los datos son incorrectos. Intenta nuevamente.
@@ -76,14 +84,14 @@
                       <label for="yourUsername" class="form-label">Usuario</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input class="form-control" id="yourUsername" required>
+                        <input class="form-control" id="yourUsername" name="usuario" required>
                         <div class="invalid-feedback">Ingresa tu usuario.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Clave</label>
-                      <input class="form-control" id="yourPassword" required>
+                      <input class="form-control" id="yourPassword" name="clave" required>
                       <div class="invalid-feedback">Ingresa tu clave</div>
                     </div>
 
@@ -113,4 +121,5 @@
     </div>
   </main><!-- End #main -->
 
-  <?php require_once 'pie.php';?>
+  <?php 
+  require_once 'pie.php';?>
