@@ -1,18 +1,16 @@
 <?php
 // Función para establecer conexión a la base de datos
+
 function ConexionBD() {
-    // Configuración de conexión
     $host = 'localhost';
-    $usuario = 'root';
-    $contraseña = '';
-    $baseDeDatos = 'app_php';
+    $user = 'root';     
+    $password = '';     
+    $dbname = 'app_php';
 
-    // Conexión a la base de datos
-    $conexion = mysqli_connect($host, $usuario, $contraseña, $baseDeDatos);
+    $conexion = new mysqli($host, $user, $password, $dbname);
 
-    // Verificar conexión
-    if (!$conexion) {
-        die('Error de conexión: ' . mysqli_connect_error());
+    if ($conexion->connect_error) {
+        die("Conexión fallida: " . $conexion->connect_error);
     }
 
     return $conexion;

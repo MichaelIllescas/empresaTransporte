@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once "funciones/buscarNivel.php";
 
+$nivel= obtenerDescripcionNivel($_SESSION['usuario']['NIVEL']);
 
 
 ?>
@@ -23,14 +25,14 @@ session_start();
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/bellota.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Sue Palacios</span>
+            <img src="assets/img/<?php echo $_SESSION["usuario"]["IMAGEN"]?>" alt=" " class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo ucfirst($_SESSION ["usuario"]["NOMBRE"]) . " " . ucfirst($_SESSION["usuario"]["APELLIDO"])?></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Sue Palacios</h6>
-              <span>Administrador</span>
+              <h6><?php echo ucfirst($_SESSION ["usuario"]["NOMBRE"]) . " " . ucfirst($_SESSION["usuario"]["APELLIDO"])?></h6>
+              <span><?php echo ucfirst($nivel)?></span>
             </li>
             <li>
               <hr class="dropdown-divider">

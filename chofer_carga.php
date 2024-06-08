@@ -1,4 +1,13 @@
-<?php require_once 'encabezado.php' ;
+<?php
+
+session_start();
+
+if (empty($_SESSION)){
+header('Location: login.php');
+
+}
+
+require_once 'encabezado.php' ;
  require_once 'seccionSuperior.php' ;
  require_once 'menu_lateral.php';
   

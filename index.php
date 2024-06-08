@@ -1,16 +1,15 @@
-<?php require_once 'encabezado.php' ;
- require_once 'seccionSuperior.php' ;
- require_once 'menu_lateral.php';
+<?php 
  session_start();
 
- if (!empty($_SESSION)){
+ if (empty($_SESSION)){
  header('Location: login.php');
 
  }
+ require_once 'encabezado.php' ;
+ require_once 'seccionSuperior.php' ;
+ require_once 'menu_lateral.php';
 
 
-
- 
 
 ?>
 
@@ -20,7 +19,7 @@
 
 
 <div class="pagetitle">
-  <h1>Bienvenid@s!!</h1>
+  <h1>Bienvenid@ <?php echo ucfirst($_SESSION["usuario"]["NOMBRE"])." ".ucfirst($_SESSION["usuario"]["APELLIDO"]);?>!!</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item active"><a href="index.php">Home</a></li>

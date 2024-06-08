@@ -1,4 +1,13 @@
-<?php require_once 'encabezado.php' ;
+<?php 
+
+session_start();
+
+if (empty($_SESSION)){
+header('Location: login.php');
+
+}
+
+require_once 'encabezado.php' ;
  require_once 'seccionSuperior.php' ;
  require_once 'menu_lateral.php';
   
@@ -24,6 +33,8 @@
             <div class="card">
               <div class="card-body">
                   <h5 class="card-title">Ingresa los datos</h5>
+                  <?php include "funciones/registrarCamion.php"?>
+            
 
                   <div class="alert alert-info alert-dismissible fade d-none" role="alert">
                     <i class="bi bi-info-circle me-1"></i>
@@ -40,54 +51,45 @@
                       Los datos se guardaron correctamente! 
                   </div>
 
-                  <form class="row g-3">
-                    <div class="col-12">
-                        <label for="selector" class="form-label">Marca (*)</label>
-                        <select class="form-select" aria-label="Selector" id="selector">
-                          <option selected="">Selecciona una opcion</option>
-                          <option>Iveco</option>
-                          <option>Volkswagen</option>
-                          <option>Volvo</option>
-                          <option>Scania</option>
-                        </select>
-                    </div>
+                  <form class="row g-3" method="POST">
+                  <div class="col-12">
+        <label for="selector" class="form-label">Marca (*)</label>
+        <select class="form-select" aria-label="Selector" id="selector" name="marca">
+            <option value="">Selecciona una opción</option>
+            <option value="Iveco" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Iveco') ? 'selected' : ''; ?>>Iveco</option>
+            <option value="Volkswagen" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Volkswagen') ? 'selected' : ''; ?>>Volkswagen</option>
+            <option value="Volvo" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Volvo') ? 'selected' : ''; ?>>Volvo</option>
+            <option value="Scania" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Scania') ? 'selected' : ''; ?>>Scania</option>
+        </select>
+    </div>
                     <div class="col-12">
                         <label for="modelo" class="form-label">Modelo (*)</label>
-                        <input type="text" class="form-control" id="modelo">
+                        <input type="text" class="form-control" id="modelo" name="modelo" value="<?php echo !empty($_POST['modelo']) ? $_POST['modelo'] : ''; ?>">
                     </div>
 
                     <div class="col-12">
                         <label for="año" class="form-label">Año</label>
-                        <input type="text" class="form-control" id="año">
+                        <input type="text" class="form-control" id="anio" name ="anio" value="<?php echo !empty($_POST['anio']) ? $_POST['anio'] : ''; ?>">
                     </div>
                     
                     <div class="col-12">
                         <label for="patente" class="form-label">Patente (*)</label>
-                        <input type="text" class="form-control" id="patente">
+                        <input type="text" class="form-control" id="patente" name ="patente" value="<?php echo !empty($_POST['patente']) ? $_POST['patente'] : ''; ?>">
                     </div>
-                    <!--
-                    <div class="col-12">
-                        <label for="selector" class="form-label">Tipo carga (*)</label>
-                        <select class="form-select" aria-label="Selector" id="selector">
-                          <option selected="">Selecciona una opcion</option>
-                          <option>Congelados</option>
-                          <option>Carga normal</option>
-                        </select>
-                    </div>
--->
+     
                     <div class="col-12">
                         <label class="form-label">Disponibilidad</label>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="gridCheck1">
+                          <input class="form-check-input" type="checkbox" id="gridCheck1" name="habilitado" value="1" <?php echo isset($_POST['habilitado']) ? 'checked' : ''; ?>>
                           <label class="form-check-label" for="gridCheck1"> Habilitado</label>
                         </div>
                     </div>
                     
 
                     <div class="text-center">
-                        <button class="btn btn-primary">Registrar</button>
-                        <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
-                        <a href="index.html" class="text-primary fw-bold">Volver al index</a>
+                        <button class="btn btn-primary" name="registrar">Registrar</button>
+                        <button type="reset" class="btn btn-secondary" name="limpiar">Limpiar Campos</button>
+                        <a href="index.php" class="text-primary fw-bold">Volver al index</a>
                     </div>
                   </form><!-- Vertical Form -->
 

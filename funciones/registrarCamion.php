@@ -1,24 +1,25 @@
 <?php
 require_once "funciones/conexion.php";
-require_once "funciones/validacionesChofer.php";
+require_once "funciones/validacionesCamion.php";
 
 $conexion = ConexionBD();
 
 if (isset($_POST["registrar"])) {
-    if (strlen($_POST["nombre"]) > 0 && strlen($_POST["apellido"]) > 0 && strlen($_POST["dni"]) > 0) {
+    if (strlen($_POST["marca"]) > 0 && strlen($_POST["anio"]) > 0 && strlen($_POST["patente"]) > 0) {
 
         $mensaje = Validar_Datos();
 
         if (empty($mensaje)) {
-            $nombre = trim($_POST["nombre"]);
-            $apellido = trim($_POST["apellido"]);
-            $dni = trim($_POST["dni"]);
-            $usuario = trim($_POST["usuario"]);
-            $clave = trim($_POST["clave"]);
+            $marca = trim($_POST["marca"]);
+            $modelo = trim($_POST["modelo"]);
+            $anio = trim($_POST["anio"]);
+            $patente = trim($_POST["patente"]);
+            $habilitado = trim($_POST["habilitado"]);
             $fechaRegistro = date("Y-m-d");
 
-            $stmt = $conexion->prepare("INSERT INTO `usuarios` (`nombre`, `apellido`, `dni`, `usuario`, `clave`, `activo`, `idNivel`, `fechaCreacion`, `imagen`) VALUES (?, ?, ?, ?, ?, 1, 3, ?, 'imagen.jpg')");
-            $stmt->bind_param("ssssss", $nombre, $apellido, $dni, $usuario, $clave, $fechaRegistro);
+            // Ajuste en la declaración preparada y los parámetros
+            $stmt = $conexion->prepare("INSERT INTO `camiones`(`marca`, `modelo`, `anio`, `patente`, `disponibilidad`, `fechaRegistro`) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssss", $marca, $modelo, $anio, $patente, $habilitado, $fechaRegistro);
 
             if ($stmt->execute()) {
                 ?>
@@ -27,7 +28,7 @@ if (isset($_POST["registrar"])) {
                     ¡Los datos se guardaron correctamente!
                 </div>
                 <?php
-                  $_POST = array();
+                $_POST = array();
             } else {
                 ?>
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -56,12 +57,7 @@ if (isset($_POST["registrar"])) {
     }
 }
 
-
-if (isset($_POST["limpiar"])){
+if (isset($_POST["limpiar"])) {
     $_POST = array();
-
-    }
+}
 ?>
-
-
-
