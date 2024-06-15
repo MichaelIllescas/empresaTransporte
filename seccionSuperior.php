@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
 require_once "funciones/buscarNivel.php";
 
 $nivel= obtenerDescripcionNivel($_SESSION['usuario']['NIVEL']);

@@ -14,7 +14,7 @@ function listadoViajes() {
 
 function cargarViaje(){
     return'<li>
-                <a href="viaje_carga.php" class="active">
+                <a href="funciones/cargarDadosRegistroViaje.php" class="active">
                     <i class="bi bi-file-earmark-plus"></i><span>Cargar nuevo Viaje</span>
                 </a>
             </li>';
@@ -28,7 +28,7 @@ function cargarChofer(){
 }
 function cargarCamion(){
     return' <li>
-                    <a href="camion_carga.php" class="active">
+                    <a href="funciones/cargarDatosCamiones.php" class="active">
                         <i class="bi bi-file-earmark-plus"></i><span>Cargar nuevo transporte</span>
                     </a>
                 </li>';

@@ -55,12 +55,17 @@ require_once 'encabezado.php' ;
                   <div class="col-12">
         <label for="selector" class="form-label">Marca (*)</label>
         <select class="form-select" aria-label="Selector" id="selector" name="marca">
-            <option value="">Selecciona una opción</option>
-            <option value="Iveco" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Iveco') ? 'selected' : ''; ?>>Iveco</option>
-            <option value="Volkswagen" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Volkswagen') ? 'selected' : ''; ?>>Volkswagen</option>
-            <option value="Volvo" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Volvo') ? 'selected' : ''; ?>>Volvo</option>
-            <option value="Scania" <?php echo (isset($_POST['marca']) && $_POST['marca'] == 'Scania') ? 'selected' : ''; ?>>Scania</option>
-        </select>
+    <option value="">Selecciona una opción</option>
+    <?php
+    if (isset($_SESSION['marcas'])) { // Verificar si la variable de sesión 'marcas' está definida
+        foreach ($_SESSION['marcas'] as $marca) { // Iterar sobre cada marca en la variable de sesión
+            // Crear un <option> para cada marca y marcarla como seleccionada si coincide con el valor enviado por POST
+            echo '<option value="' . htmlspecialchars($marca) . '" ' . ((isset($_POST['marca']) && $_POST['marca'] == $marca) ? 'selected' : '') . '>' . htmlspecialchars($marca) . '</option>';
+        }
+    }
+    ?>
+</select>
+
     </div>
                     <div class="col-12">
                         <label for="modelo" class="form-label">Modelo (*)</label>

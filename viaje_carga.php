@@ -2,6 +2,9 @@
  require_once 'seccionSuperior.php' ;
  require_once 'menu_lateral.php';
   
+ if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}// Iniciar la sesión si es q no exite
 
 ?>
 
@@ -45,22 +48,36 @@
                     <div class="col-12">
                         <label for="selector" class="form-label">Chofer (*)</label>
                         <select class="form-select" aria-label="Selector" id="selector">
-                          <option selected="">Selecciona una opcion</option>
-                          <option>Perez, Juan (DNI 22333444) </option>
-                          <option>Alvarez, Marcos (DNI 33444555) </option>
-                          <option>Rodriguez, Ariel (DNI 44555666) </option>
-                          <option>Zapata, Joaquin (DNI 55666777) </option>
-                        </select>
+                            <option selected>Selecciona una opción</option>
+                            <?php
+                            // Verificar si la variable de sesión 'usuarios' está definida y no está vacía
+                            if (isset($_SESSION['usuarios']) && !empty($_SESSION['usuarios'])) {
+                                // Recorrer la variable de sesión 'usuarios'
+                                foreach ($_SESSION['usuarios'] as $usuario) {
+                                    // Imprimir una opción para cada usuario en el formato requerido
+                                    echo '<option>' . $usuario['apellido'] . ', ' . $usuario['nombre'] . ' (DNI ' . $usuario['dni'] . ')</option>';
+                                }
+                            }
+                            ?>
+                         </select> 
+
                     </div>
                     <div class="col-12">
                         <label for="selector" class="form-label">Transporte (*)</label>
                         <select class="form-select" aria-label="Selector" id="selector">
-                          <option selected="">Selecciona una opcion</option>
-                          <option>Iveco - Daily Furgon - AC206JK </option>
-                          <option>Volkswagen - Delivery - AC506AA  </option>
-                          <option>Scania - Serie P - AA322CX   </option>
-                          <option>Iveco - Daily Chasis - AD698HA </option>
-                        </select>
+                            <option selected>Selecciona una opción</option>
+                        <?php
+                        // Verificar si la variable de sesión 'marcas' está definida y no está vacía
+                        if (isset($_SESSION['marcas']) && !empty($_SESSION['marcas'])) {
+                            // Recorrer la variable de sesión 'marcas'
+                            foreach ($_SESSION['marcas'] as $marca) {
+                                // Imprimir una opción para cada marca en el formato requerido
+                                echo '<option>' . $marca['marca'] . ' - ' . $marca['modelo'] . ' - ' . $marca['patente'] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+
                     </div>
                     
                     <div class="col-12">
@@ -70,13 +87,19 @@
                     <div class="col-12">
                         <label for="selector" class="form-label">Destino (*)</label>
                         <select class="form-select" aria-label="Selector" id="selector">
-                          <option selected="">Selecciona una opcion</option>
-                          <option>Rio Primero </option>
-                          <option>Capilla del Monte</option>
-                          <option>San Francisco  </option>
-                          <option>Morteros   </option>
-                          <option>Toledo </option>
-                        </select>
+                             <option selected>Selecciona una opción</option>
+                        <?php
+                          // Verificar si la variable de sesión 'destinos' está definida y no está vacía
+                          if (isset($_SESSION['destinos']) && !empty($_SESSION['destinos'])) {
+                          // Recorrer la variable de sesión 'destinos'
+                          foreach ($_SESSION['destinos'] as $destino) {
+                          // Imprimir una opción para cada destino en el formato requerido
+                          echo '<option>' . $destino['denominacion'] . '</option>';
+                          }   
+                        }
+                        ?>
+                          </select>
+
                     </div>
                     <div class="col-12">
                         <label for="costo" class="form-label">Costo (*)</label>
@@ -94,7 +117,7 @@
                     <div class="text-center">
                         <button class="btn btn-primary">Registrar</button>
                         <button type="reset" class="btn btn-secondary">Limpiar Campos</button>
-                        <a href="index.html" class="text-primary fw-bold">Volver al index</a>
+                        <a href="index.php" class="text-primary fw-bold">Volver al index</a>
                     </div>
                 </form><!-- Vertical Form -->
 
