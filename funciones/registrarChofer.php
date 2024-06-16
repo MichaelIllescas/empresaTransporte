@@ -17,7 +17,7 @@ if (isset($_POST["registrar"])) {
             $clave = trim($_POST["clave"]);
             $fechaRegistro = date("Y-m-d");
 
-            $stmt = $conexion->prepare("INSERT INTO `usuarios` (`nombre`, `apellido`, `dni`, `usuario`, `clave`, `activo`, `idNivel`, `fechaCreacion`, `imagen`) VALUES (?, ?, ?, ?, ?, 1, 3, ?, 'imagen.jpg')");
+            $stmt = $conexion->prepare("INSERT INTO `usuarios` (`nombre`, `apellido`, `dni`, `usuario`, `clave`, `activo`, `idNivel`, `fechaCreacion`, `imagen`) VALUES (?, ?, ?, ?, ?, 1, 3, ?, 'profile-img.jpg')");
             $stmt->bind_param("ssssss", $nombre, $apellido, $dni, $usuario, $clave, $fechaRegistro);
 
             if ($stmt->execute()) {
@@ -55,7 +55,6 @@ if (isset($_POST["registrar"])) {
         <?php
     }
 }
-
 
 if (isset($_POST["limpiar"])){
     $_POST = array();

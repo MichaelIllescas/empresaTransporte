@@ -1,0 +1,20 @@
+la base de datos contiene datos ficticios utlizados en la prueba del sistema: 
+
+
+ingresar como administrador:
+
+	usaurio: jonaIlles
+	clave: 123
+
+ingresar como operario:
+
+	usuario: operario1	
+	clave:	123
+
+ingresar como chofer:
+
+	usuario: Ricki
+	clave:	123
+
+
+nota= todos tienen inicialmente la misma imagen de perfil hasta que se desarrolle la función de que cada usuario cambie su foto y datos pérsonales. 

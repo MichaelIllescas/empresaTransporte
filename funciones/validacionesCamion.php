@@ -12,20 +12,10 @@ function Validar_Datos() {
         $vMensaje .= 'Debes ingresar una patente que sea alfa numérica y tenga entre 6  y 7 dígitos. <br />';
     }
 
-
-
     if (strlen($_POST['anio']) != 4) {
         $vMensaje.='Debes ingresar un año de 4 dígitos. <br />';
     }
-     
-    
-   
-    
-
-    
-
     return $vMensaje;
-
 }
 
 ?>

@@ -7,10 +7,11 @@ header('Location: login.php');
 
 }
 
-require_once 'encabezado.php' ;
- require_once 'seccionSuperior.php' ;
- require_once 'menu_lateral.php';
-  
+require_once 'secciones/encabezado.php' ;
+require_once 'secciones/seccionSuperior.php' ;
+require_once 'secciones/menu_lateral.php';
+
+
 
 ?>
 
@@ -118,4 +119,4 @@ require_once 'encabezado.php' ;
 
 
 
-<?php require_once 'pie.php';?>
+<?php require_once 'secciones/pie.php';?>

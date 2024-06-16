@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 $conexion = ConexionBD(); // Establecer la conexión a la base de datos
-$query = "SELECT apellido, nombre, dni FROM usuarios WHERE idNivel = 3";
+$query = "SELECT id, apellido, nombre, dni FROM usuarios WHERE idNivel = 3";
 
 $result = $conexion->query($query); // Ejecutar la consulta
 
@@ -23,7 +23,7 @@ if ($result) { // Comprobar si la consulta se ejecutó correctamente
     echo "Error al obtener los usuarios: " . $conexion->error;
 }
 // Consulta SQL para obtener todas las marcas de la tabla `marcas` y la patente de los camiones correspondientes
-$query = "SELECT m.marca, m.modelo, c.patente 
+$query = "SELECT m.id, m.marca, m.modelo, c.id, c.patente 
           FROM marcas AS m
           INNER JOIN camiones AS c ON m.id = c.idMarca 
           ORDER BY m.marca";

@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 function listadoViajes() {
 
     return  '<li>
-                <a href="viajes_listado.php" class="active">
+                <a href="funciones/cargarListadoViajes.php" class="active">
                    <i class="bi bi-layout-text-window-reverse"></i><span>Listado de viajes</span>
                   </a>
             </li>';
@@ -33,7 +33,4 @@ function cargarCamion(){
                     </a>
                 </li>';
 }
-
-
-
 ?>

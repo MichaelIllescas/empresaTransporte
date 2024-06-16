@@ -5,7 +5,7 @@ function ConexionBD() {
     $host = 'localhost';
     $user = 'root';     
     $password = '';     
-    $dbname = 'app_php';
+    $dbname = 'app_transportes';
 
     $conexion = new mysqli($host, $user, $password, $dbname);
 

@@ -1,5 +1,5 @@
 <?php
-require_once "encabezado.php";
+require_once "secciones/encabezado.php";
 
 session_start();
 
@@ -69,6 +69,6 @@ session_start();
  </div>
 </main>            
 <?php
-  require_once 'pie.php';
+  require_once 'secciones/pie.php';
   ?>
  
